@@ -267,6 +267,7 @@
     var isIos = (ua.indexOf('Mac') > -1 && ua.indexOf('Mobile') > -1);
     var isAndroid = (ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('Android ') > -1 && ua.indexOf('AppleWebKit') > -1);
     var isWeixin = (/MicroMessenger/i).test(ua);
+    var isWeibo = (ua.indexOf('Weibo') > -1);
     var iosDownladlink = 'https://itunes.apple.com/cn/app/us/id1041870519';
     var androidDownloadLink = 'http://us.himoca.com/apk/moca_us.apk';
     var microDownloadLink = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.hoolai.us&g_f=991653';
@@ -274,12 +275,13 @@
 
     downloadBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      if(isWeixin) {
-        // var guideOverlay = document.querySelector('.guide-to-open-in-browser');
-        // guideOverlay.classList.add('show');
-        // guideOverlay.addEventListener('click', function () {
-        //   this.classList.remove('show');
-        // }, false);
+      if(isWeibo) {
+        var guideOverlay = document.querySelector('.guide-to-open-in-browser');
+        guideOverlay.classList.add('show');
+        guideOverlay.addEventListener('click', function () {
+          this.classList.remove('show');
+        }, false);
+      } else if(isWeixin) {
         location.href = microDownloadLink;
       } else if(isAndroid) {
         location.href = androidDownloadLink;
