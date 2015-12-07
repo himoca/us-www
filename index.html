@@ -148,27 +148,81 @@
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script src="scripts/jquery.min.js"></script>
 <script>
-    var appId = 'wxea7a5f9ccf96e433';
-    var forGetJSSDK = 'app.himoca.com';
+    var appId;
+    // 正式环境
+    if (location.host === 'us-api.himoca.com') {
+      appId = 'wx016c96595410cf52';
+    }
+    // 开发环境
+    if (location.host === 'app.himoca.com') {
+      appId = 'wxea7a5f9ccf96e433';
+    }
+    // 审核环境
+    if (location.host === 'ios.himoca.com') {
+      appId = 'wx627e1a2a49cc2810';
+    }
+
+    var apiUrl = location.protocol + '//' + location.host + '/Us/system/getDomainInfo';
+    var urlProtocol = location.protocol + '//';
+    if(location.protocol === 'file:') {
+      apiUrl = 'http://app.himoca.com/Us/system/getDomainInfo';
+      urlProtocol = 'http://';
+    }
+
     var shareTitle = 'US.非凡的活动记录者';
     var shareDesc = '活动里人再多图再多，一键收集';
-    var shareImg = document.getElementsByTagName('img')[0];
+    var shareImg = 'http://uspic-10006628.file.myqcloud.com/images/icon/logo.png'; 
     var shareLink = 'us.himoca.com';
+
+    var urlConfig = {};
+
     var isWeixin = (/MicroMessenger/i).test(navigator.userAgent);
-    if(!isWeixin) {
+
+    if(isWeixin) {
+      getUrlConfig();
+      setTimeout(function(){
         getJsSdkData();
-      }
+      },500)
+      clearTimeout();
+    }
+
+
+    // 获取url api地址
+    function getUrlConfig() {
+      $.ajax({
+        url: apiUrl,
+        dataType: 'json',
+        data: {
+          version: 1,
+          platform: 2,
+        },
+        success: function (d) {
+          console.log(d);
+
+          urlConfig = d.p;
+
+          if(urlConfig.init_domain === 'app.himoca.com:9990') {
+            urlConfig.init_domain = 'app.himoca.com';
+            urlConfig.upload_domain = 'app.himoca.com';
+          }
+          // console.log(urlConfig);
+        }
+      });
+    }
 
 
     // 获取jssdk需要的配置
     function getJsSdkData() {
+      console.log(urlConfig);
       $.ajax({
-        url: 'http://app.himoca.com/Us/User/getJSSDK',
+        url: urlProtocol + urlConfig.init_domain + '/Us/User/getJSSDK',
         dataType: 'json',
         data: {
-          url: forGetJSSDK
+          url: location.href,
+          platform: 2
         },
         success: function (d) {
+          //console.log(urlProtocol);
 
         wx.config({
           appId: appId, // 必填，公众号的唯一标识
@@ -261,6 +315,8 @@
         }
       })
     };
+
+
 
   document.addEventListener('DOMContentLoaded', function (e) {
     var ua = navigator.userAgent;
