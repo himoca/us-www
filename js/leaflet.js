@@ -1,6 +1,7 @@
 'use strict';
 
 var screenWidth = $(window).width();  //屏幕宽度
+var screenHeight = $(window).height(); //屏幕高度
 var itime = null;
 var n = 0;
 
@@ -26,7 +27,7 @@ $(function () {
 			n = 0;
 		}
 		$('.img-box').css('transform', 'translate3d(-' + (screenWidth * n) + 'px,0,0)').css('WebkitTransform', 'translate3d(-' + (screenWidth * n) + 'px,0,0)');
-	}, 7000);
+	}, 10000);
 });
 
 

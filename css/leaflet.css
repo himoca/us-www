@@ -38,6 +38,11 @@ a img {
 	border: none;
 }
 
+img {
+	max-width: 576px;
+	margin: 0 auto;
+}
+
 .clearfix:after {
 	display: block;
 	content: '';
@@ -73,6 +78,13 @@ body {
 	z-index: 10;
 }
 
+.main-box img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
 .main-box-bottom {
 	position: absolute;
 	left: 0;
@@ -87,10 +99,18 @@ body {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	right: 0;
+}
+
+.image-box {
+	max-width: 576px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	height: 100%;
 }
 
 .img-box {
-	overflow: hidden;
 	position: absolute;
 	left: 0;
 	top: 0;

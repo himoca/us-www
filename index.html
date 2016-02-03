@@ -2,353 +2,42 @@
 <html lang="zh-cmn-Hans">
 
 <head>
-  <meta charset="utf-8">
-  <title>Us.非凡的活动记录者</title>
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta itemprop="name" content="非凡的活动记录者">
-  <meta name="description" itemprop="description" content="活动里人再多图再多，一键收集">
-  <meta itemprop="image" content="images/logo.png">
-
-  <style>
-    body {
-      margin: 0;
-      height: 736px;
-      background: url(images/main-bg.jpg) no-repeat 50% 0;
-      background-image: -webkit-image-set(url(images/main-bg.jpg) 1x, url(images/main-bg@2x.jpg) 2x);
-      background-image: image-set(url(images/main-bg.jpg) 1x, url(images/main-bg@2x.jpg) 2x);
-      font-family: sans-serif;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    .strong {
-      color: #ffab18;
-    }
-
-    .download-container {
-      position: fixed;
-      z-index: 10;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      color: #fff;
-      background-color: #8a8a8a;
-      background-color: hsla(0, 0%, 0%, 0.6);
-      -webkit-backdrop-filter: brightness(1.5) blur(20px);
-      font-size: 12px;
-      text-decoration: none;
-      padding-left: 10px;
-      padding-right: 10px;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
-
-    .logn-and-slogan {
-      display: -webkit-inline-box;
-      display: -webkit-inline-flex;
-      display: -ms-inline-flexbox;
-      display: inline-flex;
-      font-size: 12px;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-    }
-
-    .logn-and-slogan .logo {
-      margin-right: 10px;
-
-    }
-
-    .logn-and-slogan .slogan {
-      display: -webkit-inline-box;
-      display: -webkit-inline-flex;
-      display: -ms-inline-flexbox;
-      display: inline-flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      font-size: 10px;
-    }
-
-    .download-btn {
-      text-decoration: none;
-      padding: 8px 22px;
-      color: #000;
-      background: #fff;
-      border-radius: 5px;
-      letter-spacing: 1px;
-    }
-
-    .download-btn:active {
-      background: #a4a4a4;
-    }
-
-
-    .guide-to-open-in-browser {
-      display: none;
-      position: fixed;
-      z-index: 10000;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.75);
-      -webkit-backdrop-filter: brightness(1.5) blur(5px);
-      color: #fff;
-      background-color: transparent;
-      -webkit-transition: background-color 0.3s;
-      -o-transition: background-color 0.3s;
-      transition: background-color 0.3s;
-      font-size: 14px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .guide-to-open-in-browser.show {
-      display: block;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    .guide-to-open-in-browser .guide-right-top-corner {
-      text-align: right;
-      margin: 5px 15px 10px 0;
-      padding: 181px 52px 0 0;
-      background: url(images/right-top-cornor-arrow.png) no-repeat 100% 0;
-      background-image: -webkit-image-set(url(images/right-top-cornor-arrow.png) 1x, url(images/right-top-cornor-arrow@2x.png) 2x);
-      background-image: image-set(url(images/right-top-cornor-arrow.png) 1x, url(images/right-top-cornor-arrow@2x.png) 2x);
-    }
-  </style>
-
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta itemprop="name" content="">
+	<meta name="description" itemprop="description" content="Us - 非凡的活动记录者">
+	<meta itemprop="image" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/leaflet.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/leaflet.js"></script>
 </head>
-
-<body>
-  <img style="width:0;height:0" src="images/logo_300.png" alt="">
-  <a class="download-container" href="#" >
-    <div class="logn-and-slogan">
-      <img class="logo" src="images/icon.png" srcset="images/icon@2x.png 2x" alt="Us logo" width="36" height="36">
-      <div class="slogan">Us 非凡的活动记录者<br><span class="secondly-title">If not now, when? If not us, who?</span></div>
-    </div>
-    <div class="download-btn">下载Us</div>
-  </a>
-
-  <div class="guide-to-open-in-browser">
-    <div class="guide-right-top-corner">点击右上角按钮</div>
-    <div>选择“<span class="strong">在浏览器中打开</span>”就可以下载啦</div>
-  </div>
-  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-  <script src="scripts/jquery.min.js"></script>
-<script>
-    var appId;
-    // 正式环境
-    if (location.host === 'us-api.himoca.com') {
-      appId = 'wx016c96595410cf52';
-    }
-    // 开发环境
-    if (location.host === 'app.himoca.com') {
-      appId = 'wxea7a5f9ccf96e433';
-    }
-    // 审核环境
-    if (location.host === 'ios.himoca.com') {
-      appId = 'wx627e1a2a49cc2810';
-    }
-
-    var apiUrl = location.protocol + '//' + location.host + '/Us/system/getDomainInfo';
-    var urlProtocol = location.protocol + '//';
-    if(location.protocol === 'file:') {
-      apiUrl = 'http://app.himoca.com/Us/system/getDomainInfo';
-      urlProtocol = 'http://';
-    }
-
-    var shareTitle = 'Us.非凡的活动记录者';
-    var shareDesc = '活动里人再多图再多，一键收集';
-    var shareImg = 'http://uspic-10006628.file.myqcloud.com/images/icon/logo.png'; 
-    var shareLink = 'us.himoca.com';
-
-    var urlConfig = {};
-
-    var isWeixin = (/MicroMessenger/i).test(navigator.userAgent);
-
-    if(isWeixin) {
-      getUrlConfig();
-      setTimeout(function(){
-        getJsSdkData();
-      },500)
-      clearTimeout();
-    }
-
-
-    // 获取url api地址
-    function getUrlConfig() {
-      $.ajax({
-        url: apiUrl,
-        dataType: 'json',
-        data: {
-          version: 1,
-          platform: 2,
-        },
-        success: function (d) {
-          console.log(d);
-
-          urlConfig = d.p;
-
-          if(urlConfig.init_domain === 'app.himoca.com:9990') {
-            urlConfig.init_domain = 'app.himoca.com';
-            urlConfig.upload_domain = 'app.himoca.com';
-          }
-          // console.log(urlConfig);
-        }
-      });
-    }
-
-
-    // 获取jssdk需要的配置
-    function getJsSdkData() {
-      console.log(urlConfig);
-      $.ajax({
-        url: urlProtocol + urlConfig.init_domain + '/Us/User/getJSSDK',
-        dataType: 'json',
-        data: {
-          url: location.href,
-          platform: 2
-        },
-        success: function (d) {
-          //console.log(urlProtocol);
-
-        wx.config({
-          appId: appId, // 必填，公众号的唯一标识
-          timestamp: d.timestamp, // 必填，生成签名的时间戳
-          nonceStr: d.noncestr, // 必填，生成签名的随机串
-          signature: d.signature, // 必填，签名，见附录1
-          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-        });
-
-        // wx.ready(function(){
-        // alert(1);
-        //     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-        // });
-
-        // wx.error(function(res){
-        //   alert(res);
-        //     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-
-        // });
-
-
-        // 分享给朋友
-        wx.onMenuShareAppMessage({
-          title: shareTitle,
-          desc: shareDesc,
-          link: shareLink,
-          imgUrl: shareImg,
-          success: function () {
-              // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-              // 用户取消分享后执行的回调函数
-          }
-        });
-
-        // 分享到朋友圈
-        wx.onMenuShareTimeline({
-          title: shareTitle,
-          link: shareLink,
-          imgUrl: shareImg,
-          success: function () {
-              // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-              // 用户取消分享后执行的回调函数
-          }
-        });
-
-        // 分享到QQ
-        wx.onMenuShareQQ({
-          title: shareTitle,
-          desc: shareDesc,
-          link: shareLink,
-          imgUrl: shareImg,
-          success: function () {
-             // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-             // 用户取消分享后执行的回调函数
-          }
-        });
-
-        // 分享到腾讯微博
-        wx.onMenuShareWeibo({
-          title: shareTitle,
-          desc: shareDesc,
-          link: shareLink,
-          imgUrl: shareImg,
-          success: function () {
-             // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-              // 用户取消分享后执行的回调函数
-          }
-        });
-
-        // 分享到Q-zone
-        wx.onMenuShareQZone({
-          title: shareTitle,
-          desc: shareDesc,
-          link: shareLink,
-          imgUrl: shareImg,
-          success: function () {
-             // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-              // 用户取消分享后执行的回调函数
-          }
-        });
-        }
-      })
-    };
-
-
-
-  document.addEventListener('DOMContentLoaded', function (e) {
-    var ua = navigator.userAgent;
-    var isIos = (ua.indexOf('Mac') > -1 && ua.indexOf('Mobile') > -1);
-    var isAndroid = (ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('Android ') > -1 && ua.indexOf('AppleWebKit') > -1);
-    var isWeixin = (/MicroMessenger/i).test(ua);
-    var isWeibo = (ua.indexOf('Weibo') > -1);
-    var iosDownladlink = 'https://itunes.apple.com/cn/app/us/id1041870519';
-    var androidDownloadLink = 'http://us.himoca.com/apk/moca_us.apk';
-    var microDownloadLink = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.hoolai.us&g_f=991653';
-    var downloadBtn = document.querySelector('.download-container');
-
-    downloadBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      if(isWeibo) {
-        var guideOverlay = document.querySelector('.guide-to-open-in-browser');
-        guideOverlay.classList.add('show');
-        guideOverlay.addEventListener('click', function () {
-          this.classList.remove('show');
-        }, false);
-      } else if(isWeixin) {
-        location.href = microDownloadLink;
-      } else if(isAndroid) {
-        location.href = microDownloadLink;
-      } else {
-        location.href = microDownloadLink;
-      }
-    }, false);
-  }, false);
-
-
-</script>
+<body id="body">
+	<div class="main-box">
+		<img alt="" src="img/side2.png" width="100%">
+	</div>
+	<div class="main-box-bottom">
+		<img alt="" src="img/side2.png" width="100%">
+	</div>
+	<div class="image-box">
+		<ul class="img-box clearfix" id="img-box">
+			<li class="img-box-li0"><img alt="" src="img/us-01.jpg"></li>
+			<li class="img-box-li1"><img alt="" src="img/us-02.jpg"></li>
+			<li class="img-box-li2"><img alt="" src="img/us-03.jpg"></li>
+			<li class="img-box-li3"><img alt="" src="img/us-04.jpg"></li>
+		</ul>
+	</div>
+	<div class="toolbar-download-box">
+		<a class="toolbar-download-container" href="javascript:;">
+			<img class="logo" src="img/icon.png" alt="US logo" width="36" height="36">
+			<div class="slogan">
+				<p class="slogan_1">Us 可以和亲密的人一起记录的APP</p>
+				<p class="slogan_2">If not now, when? If not us, who?</p>
+			</div>
+			<div class="toolbar-download-btn">下载Us</div>
+		</a>
+	</div>
 </body>
-
 </html>
